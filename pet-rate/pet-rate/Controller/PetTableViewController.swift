@@ -9,7 +9,7 @@ import UIKit
 
 class PetTableViewController: UITableViewController {
     
-    let Pets = [Pet(nome: "Cachorro", nota: 5),
+    var Pets = [Pet(nome: "Cachorro", nota: 5),
                 Pet(nome: "Gato", nota: 5),
                 Pet(nome: "Peixe", nota: 5)]
     
@@ -24,5 +24,16 @@ class PetTableViewController: UITableViewController {
         celula.textLabel?.text = pet.nome
         
         return celula
+    }
+    
+    func addPet(_ pet: Pet){
+        Pets.append(pet)
+        tableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = segue.destination as? ViewController {
+            viewController.tableViewController = self
+        }
     }
 }

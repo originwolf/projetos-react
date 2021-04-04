@@ -9,7 +9,7 @@ import UIKit
 
 class StreamTableViewController: UITableViewController {
     
-    let streams = [Stream(nome: "BrunaRodrigues", plataforma: "Twitch", nota: 5),
+    var streams = [Stream(nome: "BrunaRodrigues", plataforma: "Twitch", nota: 5),
                    Stream(nome: "Ammy", plataforma: "Twitch", nota: 5),
                    Stream(nome: "BarbiiAshe", plataforma: "Twitch", nota: 5)]
     
@@ -25,6 +25,17 @@ class StreamTableViewController: UITableViewController {
         celula.textLabel?.text = stream.nome
         
         return celula
+    }
+    
+    func add(_ stream: Stream) {
+        streams.append(stream)
+        tableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = segue.destination as? ViewController{
+            viewController.tableViewController = self
+        }
     }
     
 }

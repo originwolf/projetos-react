@@ -8,6 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var tableViewController: StreamTableViewController?
 
     @IBOutlet var nomeStreamer: UITextField?
     @IBOutlet var plataformaStreamer: UITextField?
@@ -30,6 +32,10 @@ class ViewController: UIViewController {
         let stream = Stream(nome: nomeDoStreamer, plataforma: PlataformaDoStreamer, nota: notaDaStream)
         
         print("Você está assistindo a stream de \(stream.nome) na plataforma \(stream.plataforma). A nota atual da stream é \(stream.nota)")
+        
+        tableViewController?.add(stream)
+        
+        navigationController?.popViewController(animated: true)
         
     }
 }

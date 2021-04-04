@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var tableViewController: PetTableViewController?
+    
     @IBOutlet var nomePetTextField: UITextField?
     @IBOutlet var notaPetTextField: UITextField?
     
@@ -25,6 +27,10 @@ class ViewController: UIViewController {
         let pet = Pet(nome: nomePet, nota: nota)
         
         print("Brinquei com um \(pet.nome) e dei nota \(pet.nota)")
+        
+        tableViewController?.addPet(pet)
+        
+        navigationController?.popViewController(animated: true)
     }
 
 }
